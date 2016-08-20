@@ -124,7 +124,7 @@ print(crime_rates_int)
 f = open('./crime_stats.csv', 'r')   # These work with local files/cmds
 data = f.read()
 rows = data.split('\\n')
-print(rows[0:5])
+# print(rows[0:5])
 int_data = []
 for row in rows:
     split_list = row.split(',')
@@ -144,3 +144,18 @@ print(int_crime_rates)
     # crime_rate = int(values[1])
     # int_crime_rates.append(crime_rate)
 
+file_object.close()
+print(file_object)
+# mystr = file_object.read() # This will throw an error - use try/except?
+
+f.close()
+print(f)
+# c = f.read() # This will throw an error - use try/except?
+
+# DON'T FORGET TO CLOSE FILES!
+# THERE IS ALSO THE with ... as ... technique:
+
+with open('.\crime_stats.csv', 'r') as with_open:
+    print(with_open.read())
+
+# with_open is automatically closed
