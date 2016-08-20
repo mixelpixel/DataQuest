@@ -159,3 +159,61 @@ with open('.\crime_stats.csv', 'r') as with_open:
     print(with_open.read())
 
 # with_open is automatically closed
+
+
+###MORE MESSING ABOUT TO FOLLOW
+
+# # # # from sys import argv     # the name of the file is to be entered
+# # # # file_name = argv[1]      # when python script (argv[0]) is invoked
+# # # file_name = ("crime_stats.csv")
+# # # file_object = open(file_name, 'r')
+# file_object = open('./crime_stats.csv', 'r') # either \ or / seem to work for indicating directories
+# file_contents = file_object.read()
+
+#### Grand master "with-as-list comprehension":
+# with open('./crime_stats.csv', 'r') as file_object:
+    # file_contents = [cell.split(',') for cell in file_object.read().split('\\n')]
+
+with open('./crime_stats.csv', 'r') as file_object:
+    # print(file_object.read())
+    file_contents = file_object.read()
+
+# print(file_contents)
+# print(file_object.read()) # THROWS an EROR cuz the file has been closed by "with...as"
+# try:
+    # print(file_object.read())
+# except:
+    # print('file is closed') 
+# except ValueError:
+
+file_list = file_contents.split('\\n')
+# print(file_list)
+
+value_list = [cell.split(',') for cell in file_list]
+# value_list = [cell.split(',') for cell in file_contents.split('\\n')]
+print(value_list)
+
+###LIST COMPREHENSIONS
+# make separate lists of crime rate and cities
+# crime_rates = []
+# for row in final_data:
+    # crime_rate = row[1]
+    # crime_rates.append(crime_rate)
+# # print(crime_rates)
+
+# # convert the crime rates to integers
+# crime_rates_int = []
+# for row in final_data:
+    # crime_rate = int(row[1])
+    # crime_rates_int.append(crime_rate)
+crime_rates_int = [int(row[1]) for row in final_data]
+print("Crime Rates (integers):\n", crime_rates_int)
+
+# cities_list = []
+# for row in final_data:
+    # city = row[0]
+    # cities_list.append(city)
+cities_list = [row[0] for row in final_data]
+print("Cities:\n", cities_list)
+
+
