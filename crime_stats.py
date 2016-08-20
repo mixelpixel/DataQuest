@@ -100,6 +100,7 @@ for row in final_data:
     crime_rate = row[1]
     crime_rates.append(crime_rate)
 print(crime_rates)
+
 cities_list = []
 for row in final_data:
     city = row[0]
@@ -117,15 +118,20 @@ print(crime_rates_int)
 
 
 # My solution: 
-# f = open('crime_rates.csv', 'r')
+# f = open('crime_rates.csv', 'r')   # These work in the DataQuest environment
 # data = f.read()
 # rows = data.split('\n')
-# print(rows[0:5])
-# final_data = []
-# for row in rows:
-    # split_list = row.split(',')
-    # crime_rate = .append(int(split_list[1]))
-# int_crime_rates = final_data
+f = open('./crime_stats.csv', 'r')   # These work with local files/cmds
+data = f.read()
+rows = data.split('\\n')
+print(rows[0:5])
+int_data = []
+for row in rows:
+    split_list = row.split(',')
+    crime_rate = int_data.append(int(split_list[1]))
+int_crime_rates = int_data
+print()
+print(int_crime_rates)
 
 # Their solution
 # f = open('crime_rates.csv', 'r')
