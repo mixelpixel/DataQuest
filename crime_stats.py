@@ -1,6 +1,7 @@
 # python 3.5.1
 # referencing http://learnpythonthehardway.org/book/ex15.html and
 # https://www.dataquest.io/mission/2/files-and-loops
+# working with this data: https://en.wikipedia.org/wiki/List_of_United_States_cities_by_crime_rate_(2014)
 # invoke this script with the "crime_stats.csv" file in the same directory
 # invoke from the cmd line like so: "python crime_stats.py crime_stats.csv"
 # In lesson one of DataQuests Data Analyst track We went over the basics of
@@ -23,6 +24,9 @@
 # Reading in files
 # Splitting data in files
 # For-Loops
+# lists of lists
+# splitting elements in a list
+# double bracket notation
 
 
 from sys import argv
@@ -30,7 +34,7 @@ from sys import argv
 # import codecs
 
 filename = argv[1] # argv[0] is the name of the program script, i.e. crime_stats.py
-file_object = open(filename, 'r', encoding='utf8')
+file_object = open(filename, 'r') #, encoding='utf8')
 file_contents = file_object.read()
 file_list = file_contents.split("\\n") # HAHAHA - it took me a LOOOONG TIME to remember the leading slash here
 # http://stackoverflow.com/questions/39051835/python-3-split-n/39051836#39051836
@@ -59,9 +63,78 @@ print("4.) Here's a list of the file contents:\n{}".format(file_list))
 
 rows = file_contents.split("\\n")
 print(len(rows))
+print(rows)
 
 for row in rows:
     print(row)
-    
-    
+
+# # Splitting a list of lists
+# three_rows = ['Albuquerque, 740', 'Anaheim, 371', 'Anchorage, 828']
+# final_list = []
+# for row in three_rows:
+    # split_list = row.split(',')
+    # final_list.append(split_list)
+# print(final_list)
+# print(final_list[0])
+# print(final_list[1])
+# print(final_list[2])
+
+# # list comprehension
+# x = [row.split(',') for row in three_rows]
+# print("list comprehension: {}".format(x))
+
+# # splitting elements in a list
+# final_data_for = []
+# for row in rows:
+    # split_list = row.split(',')
+    # final_data_for.append(split_list)
+# print(final_data_for)
+
+# list comprehension version:
+final_data = [row.split(',') for row in rows]
+print(final_data)
+
+# make separate lists of crime rate and cities
+crime_rates = []
+for row in final_data:
+    crime_rate = row[1]
+    crime_rates.append(crime_rate)
+print(crime_rates)
+cities_list = []
+for row in final_data:
+    city = row[0]
+    cities_list.append(city)
+print(cities_list)
+
+# convert the crime rates to integers
+crime_rates_int = []
+for row in final_data:
+    crime_rate = int(row[1])
+    crime_rates_int.append(crime_rate)
+print(crime_rates_int)
+
+
+
+
+# My solution: 
+# f = open('crime_rates.csv', 'r')
+# data = f.read()
+# rows = data.split('\n')
+# print(rows[0:5])
+# final_data = []
+# for row in rows:
+    # split_list = row.split(',')
+    # crime_rate = .append(int(split_list[1]))
+# int_crime_rates = final_data
+
+# Their solution
+# f = open('crime_rates.csv', 'r')
+# data = f.read()
+# rows = data.split('\n')
+# print(rows[0:5])
+# int_crime_rates = []
+# for row in rows:
+    # values = row.split(',')
+    # crime_rate = int(values[1])
+    # int_crime_rates.append(crime_rate)
 
