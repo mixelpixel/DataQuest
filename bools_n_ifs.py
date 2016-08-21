@@ -85,9 +85,18 @@ for city in cities:
     counter += 1
 print(index)
 
-five_hundred_list = []
-for rate in crime_rates:
-    if rate > 500:
-        five_hundred_list.append(rate)
+# five_hundred_list = []
+# for rate in crime_rates:
+    # if rate > 500:
+        # five_hundred_list.append(rate)
+five_hundred_list = [rate for rate in crime_rates if rate > 500]
 print(five_hundred_list)
+
+highest = (max(crime_rates))
+# highest = crime_rates[0]
+# for rate in crime_rates:
+    # if rate > highest:
+        # highest = rate
+print(highest)
+
 
