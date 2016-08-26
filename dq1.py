@@ -20,6 +20,7 @@ with open('dq_unisex_names.csv', 'r') as file_object:
 # print(file_object)
 # try: c = file_object.read()
 # except: print("file object is closed")
+# # # http://stackoverflow.com/questions/8011797/open-read-and-close-a-file-in-1-line-of-code
 
 
 # # # # Convert The String To A List
